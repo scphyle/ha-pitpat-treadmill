@@ -1,0 +1,73 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "WalkingPad Treadmill",
+        "description": "Select the treadmill to add. It must be powered on and in range of Home Assistant or an active Bluetooth proxy.",
+        "data": {
+          "address": "Bluetooth device"
+        }
+      },
+      "bluetooth_confirm": {
+        "title": "WalkingPad Treadmill",
+        "description": "Do you want to set up {name}?"
+      }
+    },
+    "abort": {
+      "no_devices_found": "No supported treadmills found. Make sure the treadmill is powered on and in range of Home Assistant or an active Bluetooth proxy.",
+      "already_configured": "This treadmill is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "state": {
+        "name": "State",
+        "state": {
+          "countdown": "Countdown",
+          "running": "Running",
+          "paused": "Paused",
+          "stopped": "Stopped",
+          "disconnected": "Disconnected"
+        }
+      },
+      "speed_feedback": {
+        "name": "Speed"
+      },
+      "distance": {
+        "name": "Distance"
+      },
+      "duration": {
+        "name": "Duration"
+      },
+      "calories": {
+        "name": "Calories"
+      },
+      "steps": {
+        "name": "Steps"
+      },
+      "max_speed": {
+        "name": "Max speed"
+      },
+      "firmware": {
+        "name": "Firmware version"
+      }
+    },
+    "number": {
+      "speed": {
+        "name": "Speed"
+      }
+    },
+    "button": {
+      "start": {
+        "name": "Start"
+      },
+      "pause": {
+        "name": "Pause/Resume"
+      },
+      "stop": {
+        "name": "Stop"
+      }
+    }
+  }
+}

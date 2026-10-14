@@ -1,0 +1,27 @@
+{
+  "domain": "walkingpad",
+  "name": "WalkingPad Treadmill",
+  "bluetooth": [
+    {
+      "connectable": true,
+      "service_uuid": "0000fba0-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "connectable": true,
+      "service_uuid": "0000ffff-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "connectable": true,
+      "local_name": "PitPat*"
+    }
+  ],
+  "codeowners": ["@scphyle"],
+  "config_flow": true,
+  "dependencies": ["bluetooth_adapters"],
+  "documentation": "https://github.com/scphyle/ha-pitpat-treadmill",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/scphyle/ha-pitpat-treadmill/issues",
+  "requirements": ["bleak-retry-connector>=3.4.0"],
+  "version": "1.1.0"
+}

@@ -1,0 +1,14 @@
+# Python / Home Assistant integration
+__pycache__/
+*.py[cod]
+.venv*/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# JetBrains project files
+.idea/
+
+# Local test/run artifacts from BLE reverse-engineering work
+*.log
+*.jsonl
