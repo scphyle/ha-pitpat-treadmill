@@ -31,7 +31,7 @@ SERVICE_UUID = "0000ffff-0000-1000-8000-00805f9b34fb"
 WRITE_CHAR_UUID = "0000ff01-0000-1000-8000-00805f9b34fb"
 NOTIFY_CHAR_UUID = "0000ff02-0000-1000-8000-00805f9b34fb"
 
-DEFAULT_ADDRESS = "9C:9E:6E:1A:0D:AE"
+DEFAULT_ADDRESS = "XX:XX:XX:XX:XX:XX"  # replace with your treadmill's BLE MAC, or pass --address
 
 
 def log_line(log_file, direction: str, data: bytes) -> None:
