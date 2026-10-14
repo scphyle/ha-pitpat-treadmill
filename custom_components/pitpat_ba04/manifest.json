@@ -1,6 +1,6 @@
 {
-  "domain": "walkingpad",
-  "name": "WalkingPad Treadmill",
+  "domain": "pitpat_ba04",
+  "name": "PitPat Treadmill (BA04)",
   "bluetooth": [
     {
       "connectable": true,
@@ -23,5 +23,5 @@
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/scphyle/ha-pitpat-treadmill/issues",
   "requirements": ["bleak-retry-connector>=3.4.0"],
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

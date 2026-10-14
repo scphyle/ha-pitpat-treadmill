@@ -19,6 +19,14 @@ Bluetooth proxy in active mode, so no dedicated bridge hardware is needed.
 The variant is auto-detected during Bluetooth discovery -- no manual
 configuration needed.
 
+This fork uses its own integration domain (`pitpat_ba04`, folder
+`custom_components/pitpat_ba04/`) so it can never collide with the upstream
+`sirfergy/HomeAssistantWalkingPad` integration (domain `walkingpad`) even if
+both happen to be installed at once. That said, since this fork is a
+superset -- it handles both FBA0 and BA04 devices -- there's no reason to
+keep the original installed alongside it; having both will just register
+the same treadmill twice under two different integrations.
+
 ## Installation
 
 ### Via HACS (custom repository)
@@ -32,7 +40,7 @@ configuration needed.
 
 ### Manual
 
-Copy `custom_components/walkingpad/` into your Home Assistant `config/custom_components/`
+Copy `custom_components/pitpat_ba04/` into your Home Assistant `config/custom_components/`
 directory and restart Home Assistant.
 
 ## What you get

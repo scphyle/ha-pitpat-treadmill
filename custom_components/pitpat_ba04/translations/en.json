@@ -3,14 +3,14 @@
     "flow_title": "{name}",
     "step": {
       "user": {
-        "title": "WalkingPad Treadmill",
+        "title": "PitPat Treadmill (BA04)",
         "description": "Select the treadmill to add. It must be powered on and in range of Home Assistant or an active Bluetooth proxy.",
         "data": {
           "address": "Bluetooth device"
         }
       },
       "bluetooth_confirm": {
-        "title": "WalkingPad Treadmill",
+        "title": "PitPat Treadmill (BA04)",
         "description": "Do you want to set up {name}?"
       }
     },

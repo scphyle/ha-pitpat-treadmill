@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-DOMAIN = "walkingpad"
+DOMAIN = "pitpat_ba04"
 
 # GATT layout of the PitPat/Superun treadmill -- "FBA0" variant.
 SERVICE_PAD_UUID = "0000fba0-0000-1000-8000-00805f9b34fb"
@@ -24,7 +24,7 @@ VARIANT_BA04 = "ba04"
 # Advertised name prefix used for Bluetooth discovery.
 DEVICE_NAME_PREFIX = "PitPat"
 
-DEFAULT_NAME = "WalkingPad Treadmill"
+DEFAULT_NAME = "PitPat Treadmill (BA04)"
 MANUFACTURER = "PitPat"
 MODEL = "Treadmill (BLE)"
 
