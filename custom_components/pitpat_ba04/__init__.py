@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
+from pathlib import Path
 
 from homeassistant.components import bluetooth
 from homeassistant.components.bluetooth import (
@@ -18,18 +19,38 @@ from homeassistant.components.bluetooth import (
     BluetoothScanningMode,
     BluetoothServiceInfoBleak,
 )
+from homeassistant.components.frontend import add_extra_js_url
+from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS, Platform
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryNotReady
+from homeassistant.helpers.typing import ConfigType
 
-from .const import CONF_VARIANT, DOMAIN, VARIANT_FBA0
+from .const import (
+    CARD_FILENAME,
+    CARD_URL_PATH,
+    CARD_VERSION,
+    CONF_VARIANT,
+    DOMAIN,
+    VARIANT_FBA0,
+)
 from .coordinator import WalkingPadCoordinator
 from .walkingpad import TRANSIENT_ERRORS, WalkingPadTreadmill
 
 _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS = [Platform.BUTTON, Platform.NUMBER, Platform.SENSOR]
+
+
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    """Register the companion Lovelace card as a frontend resource."""
+    card_path = Path(__file__).parent / "www" / CARD_FILENAME
+    await hass.http.async_register_static_paths(
+        [StaticPathConfig(CARD_URL_PATH, str(card_path), cache_headers=False)]
+    )
+    add_extra_js_url(hass, f"{CARD_URL_PATH}?v={CARD_VERSION}")
+    return True
 
 
 @dataclass

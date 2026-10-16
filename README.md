@@ -48,6 +48,28 @@ directory and restart Home Assistant.
 - Sensors: speed, distance, duration, calories, steps, max speed, firmware version
 - A speed slider (also starts/retargets the belt)
 - Start / Pause / Stop buttons
+- A companion Lovelace card (see below) with a live speed readout, slider,
+  start/pause/stop controls, and a workout stats grid
+
+## The Lovelace card
+
+The integration auto-registers `custom:pitpat-treadmill-card` as a frontend
+resource -- no manual resource setup needed. Add it to a dashboard as a
+manual card:
+
+```yaml
+type: custom:pitpat-treadmill-card
+# device_id: <id>   # optional; auto-detected if you only have one treadmill
+# name: My Treadmill
+# logo: /local/tazhome-logo.svg   # optional, replaces the default icon
+```
+
+Entities are matched to the device automatically, so it keeps working even if
+you rename entities' friendly names. If auto-detection ever picks the wrong
+entity, any of these can be pinned explicitly: `state_entity`,
+`speed_sensor_entity`, `speed_entity` (the number), `distance_entity`,
+`duration_entity`, `calories_entity`, `steps_entity`, `max_speed_entity`,
+`firmware_entity`, `start_entity`, `pause_entity`, `stop_entity`.
 
 ## Notes on the BA04 variant
 

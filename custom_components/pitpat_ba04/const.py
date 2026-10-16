@@ -36,3 +36,8 @@ SPEED_STEP_KMH = 0.1
 # Speeds at or below this (in km/h) are treated as a stop request: the treadmill
 # stops the belt for any commanded speed <= 100 (0.1 km/h).
 STOP_THRESHOLD_KMH = 0.1
+
+# Companion Lovelace card, served as a frontend static resource.
+CARD_FILENAME = "pitpat-treadmill-card.js"
+CARD_URL_PATH = f"/{DOMAIN}_files/{CARD_FILENAME}"
+CARD_VERSION = "1"
