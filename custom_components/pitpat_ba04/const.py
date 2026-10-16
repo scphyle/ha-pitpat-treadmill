@@ -40,4 +40,4 @@ STOP_THRESHOLD_KMH = 0.1
 # Companion Lovelace card, served as a frontend static resource.
 CARD_FILENAME = "pitpat-treadmill-card.js"
 CARD_URL_PATH = f"/{DOMAIN}_files/{CARD_FILENAME}"
-CARD_VERSION = "1"
+CARD_VERSION = "2"
