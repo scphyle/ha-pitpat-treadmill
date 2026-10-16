@@ -80,7 +80,13 @@ async def async_setup_entry(
         )
 
     variant = entry.data.get(CONF_VARIANT, VARIANT_FBA0)
-    treadmill = WalkingPadTreadmill(ble_device, variant=variant)
+    treadmill = WalkingPadTreadmill(
+        ble_device,
+        variant=variant,
+        create_task=lambda coro: entry.async_create_background_task(
+            hass, coro, name=f"{DOMAIN} heartbeat {address}"
+        ),
+    )
     try:
         await treadmill.async_ensure_connected()
     except TRANSIENT_ERRORS as err:

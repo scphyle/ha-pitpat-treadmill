@@ -12,3 +12,6 @@ __pycache__/
 # Local test/run artifacts from BLE reverse-engineering work
 *.log
 *.jsonl
+
+# Standalone Lovelace card preview harness -- dev-only, not shipped
+dev/

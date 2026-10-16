@@ -25,7 +25,7 @@
         "name": "State",
         "state": {
           "countdown": "Countdown",
-          "running": "Running",
+          "running": "Walking",
           "paused": "Paused",
           "stopped": "Stopped",
           "disconnected": "Disconnected"

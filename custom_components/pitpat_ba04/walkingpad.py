@@ -21,8 +21,9 @@ from __future__ import annotations
 
 import asyncio
 import logging
-from collections.abc import Callable
+from collections.abc import Callable, Coroutine
 from dataclasses import replace
+from typing import Any
 
 from bleak.backends.device import BLEDevice
 from bleak.backends.scanner import AdvertisementData
@@ -81,10 +82,18 @@ class WalkingPadTreadmill:
         advertisement_data: AdvertisementData | None = None,
         *,
         variant: str = VARIANT_FBA0,
+        create_task: Callable[[Coroutine[Any, Any, None]], "asyncio.Task[None]"]
+        | None = None,
     ) -> None:
         self._ble_device = ble_device
         self._advertisement_data = advertisement_data
         self._variant = variant
+        # Deliberately defaults to plain asyncio rather than requiring a
+        # HomeAssistant/ConfigEntry object, so this class stays usable
+        # standalone (see module docstring). The integration wires in
+        # ConfigEntry.async_create_background_task instead, so HA tracks the
+        # heartbeat loop for clean shutdown and exception visibility.
+        self._create_task = create_task or asyncio.ensure_future
         self._write_uuid = (
             CHARACTERISTIC_WRITE_BA04_UUID
             if variant == VARIANT_BA04
@@ -255,7 +264,7 @@ class WalkingPadTreadmill:
             self._expected_disconnect = False
             self._connected = True
             if self._variant == VARIANT_BA04:
-                self._heartbeat_task = asyncio.ensure_future(
+                self._heartbeat_task = self._create_task(
                     self._ba04_heartbeat_loop()
                 )
             _LOGGER.debug("%s: connected", self.name)

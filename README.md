@@ -53,23 +53,42 @@ directory and restart Home Assistant.
 
 ## The Lovelace card
 
-The integration auto-registers `custom:pitpat-treadmill-card` as a frontend
-resource -- no manual resource setup needed. Add it to a dashboard as a
-manual card:
+The integration auto-registers three companion cards as a frontend resource
+-- no manual resource setup needed. Add whichever size fits to a dashboard
+as a manual card:
+
+| `type:` | What it shows |
+|---|---|
+| `custom:pitpat-treadmill-card` | Full -- animated walker, speed, stats |
+| `custom:pitpat-treadmill-controls-card` | Controls only -- speed + start/pause/stop, no animation |
+| `custom:pitpat-treadmill-mini-card` | Just Start/Stop |
+
+Each one has a GUI editor (click "Edit" on the card, or add it via the card
+picker's visual editor) with a device picker and, for the full/controls
+cards, name/logo fields -- no YAML needed for the common case. All three
+also accept the same YAML config shown below if you prefer hand-editing it
+(the smaller ones just ignore options that don't apply to them -- the mini
+card has no header, so `name`/`logo` are no-ops there):
 
 ```yaml
 type: custom:pitpat-treadmill-card
-# device_id: <id>   # optional; auto-detected if you only have one treadmill
-# name: My Treadmill
-# logo: /local/tazhome-logo.svg   # optional, replaces the default icon
+# device_id: <id>   # pick which treadmill if you have more than one -- if
+                     # omitted, one is picked arbitrarily, so only leave this
+                     # out when you have exactly one treadmill
+# name: My Treadmill   # optional; defaults to the device's own name, so
+                        # renaming it under Settings -> Devices is usually
+                        # enough on its own
+# logo: /local/your-logo.png   # optional, replaces the default icon -- left
+                                # unset by default so installing this card
+                                # doesn't brand your dashboard with anything
 ```
 
 Entities are matched to the device automatically, so it keeps working even if
 you rename entities' friendly names. If auto-detection ever picks the wrong
 entity, any of these can be pinned explicitly: `state_entity`,
 `speed_sensor_entity`, `speed_entity` (the number), `distance_entity`,
-`duration_entity`, `calories_entity`, `steps_entity`, `max_speed_entity`,
-`firmware_entity`, `start_entity`, `pause_entity`, `stop_entity`.
+`duration_entity`, `calories_entity`, `steps_entity`, `start_entity`,
+`pause_entity`, `stop_entity`.
 
 ## Notes on the BA04 variant
 

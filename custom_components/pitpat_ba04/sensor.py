@@ -89,7 +89,6 @@ SENSORS: tuple[WalkingPadSensorEntityDescription, ...] = (
         native_unit_of_measurement="steps",
         state_class=SensorStateClass.TOTAL_INCREASING,
         icon="mdi:shoe-print",
-        entity_registry_enabled_default=False,
         value_fn=lambda data: data.steps,
     ),
     WalkingPadSensorEntityDescription(
